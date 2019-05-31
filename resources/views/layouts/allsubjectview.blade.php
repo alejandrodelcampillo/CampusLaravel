@@ -7,23 +7,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 <body>
-    @include("layouts.navgrande")
-    <div class="container">
-        <form class="text-center border p-5" role="form" method="post" action="{{action('MateriaController@store')}}">
-            {{csrf_field()}}
+@include('layouts.navgrande')
+<div class="container">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Materia</th>
+            <th scope="col">Profesor</th>
+        </tr>
+        </thead>
+        <tbody>
 
-            <p class="h4 mb-4">Menú Materia</p>
-
-            <lavel>Nombre de la Materia</lavel>
-            <input type="text" id="materia" name="materia" class="form-control mb-4" placeholder="Nombre materia">
-            <lavel>Mail del Profesor</lavel>
-            <input type="text" id="materia" name="mail" class="form-control mb-4" placeholder="Mail Profesor">
-
-
-            <!-- Sign in button -->
-            <button class="btn btn-info my-4 btn-lg btn-warning border-dark" type="submit">Enviar</button>
-        </form>
-    </div>
-    @include('layouts.footer')
+        <?php foreach($datos as $dato){?>
+        <tr>
+            <th scope="row"><?php echo $dato->subject_id; ?></th>
+            <td><?php echo $dato->name_m; ?> </td>
+            <td><?php echo $dato->name; ?></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+</div>
+@include('layouts.footer')
 </body>
 </html>

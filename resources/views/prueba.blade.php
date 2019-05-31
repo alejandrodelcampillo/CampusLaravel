@@ -1,6 +1,8 @@
 <?php
-foreach ($datos as $dato) {
+
+        print_r($datos);
+/*foreach ($datos as $dato) {
     echo "<pre>";
-    echo $dato->name;
+    echo $dato->id + $dato->name;
     echo "</pre>";
 }

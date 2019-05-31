@@ -7,8 +7,10 @@
 
     <p class="h4 mb-4">Menú Materia</p>
 
-    <!-- Email -->
+    <lavel>Nombre de la Materia</lavel>
     <input type="text" id="materia" name="materia" class="form-control mb-4" placeholder="Nombre materia">
+  <lavel>Mail del Profesor</lavel>
+    <input type="text" id="materia" name="mail" class="form-control mb-4" placeholder="Nombre materia">
 
 
     <!-- Sign in button -->

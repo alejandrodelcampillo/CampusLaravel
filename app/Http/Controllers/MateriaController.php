@@ -35,38 +35,36 @@ class MateriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function getidbymail($mail){
+        $dato= DB::table('users')->where('users.email','=',$mail)->get('users.id');
+        return $dato;
+    }
     public function store(Request $request)
     {
+
         $materia = new Materia;
-        $materia->name = $request->get('materia');
+        $materia->name_m = $request->get('materia');
         $materia->save();
         $idmateria = DB::getPdo()->lastInsertId();
-        $iduser = auth()->id();
-        MateriasUsersController::guardar($idmateria,$iduser);
+        $iduser = $this->getidbymail($request->get('mail'));
+        MateriasUsersController::guardar($idmateria,substr($iduser,7,-2));
         return redirect('/');
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
 
     }
+
+
     public function mostrar()
     {
-       $id=auth()->id();
         $datos =  DB::table('users')
             ->join('materias_users', 'users.id', '=', 'materias_users.user_id')
             ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
-            ->where("users.id",'=',$id)
-            ->get('materias.name');
-       //print_r($datos);
-       include("../resources/views/prueba.blade.php");
+            ->get();
+
+       include("../resources/views/allsubjectview.blade.php");
     }
 
 

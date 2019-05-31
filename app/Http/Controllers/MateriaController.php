@@ -39,7 +39,6 @@ class MateriaController extends Controller
     {
         $materia = new Materia;
         $materia->name = $request->get('materia');
-
         $materia->save();
         $idmateria = DB::getPdo()->lastInsertId();
         $iduser = auth()->id();

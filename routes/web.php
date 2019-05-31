@@ -14,14 +14,11 @@ use App\Usuario as Usuario;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/hola', function () {
-    return "bien";
-});
 
 Auth::routes();
-
+Route::get('/mostrar', 'MateriaController@mostrar')->name('mostrar');
 Route::get('/home', 'HomeController@index')->name('home');
-
+//Route::post('/materias/create', 'MateriaController@store');
 Route::resource("materia","MateriaController");
 
 Route::get("/leer/{nombre}",function ($nombre){

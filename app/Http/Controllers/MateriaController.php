@@ -64,7 +64,7 @@ class MateriaController extends Controller
             ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
             ->get();
 
-       include("../resources/views/allsubjectview.blade.php");
+       include("../resources/views/layouts/allsubjectview.blade.php");
     }
 
 

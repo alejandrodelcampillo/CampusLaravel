@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\MateriasUsersController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Materia as materia;
 class MateriaController extends Controller
@@ -14,8 +14,8 @@ class MateriaController extends Controller
      */
     public function index()
     {
-
-        return view('formmateria');
+        $alert=null;
+        return view('formmateria',compact('alert'));
 
     }
 
@@ -42,13 +42,21 @@ class MateriaController extends Controller
     public function store(Request $request)
     {
 
-        $materia = new Materia;
-        $materia->name_m = $request->get('materia');
-        $materia->save();
-        $idmateria = DB::getPdo()->lastInsertId();
         $iduser = $this->getidbymail($request->get('mail'));
-        MateriasUsersController::guardar($idmateria,substr($iduser,7,-2));
-        return redirect('/');
+        $iduser = substr($iduser,7,-2);
+        if(empty($iduser) or is_null($iduser)){
+            $alert=true;
+            return view('formmateria',compact('alert'));
+        }else{
+            $materia = new Materia;
+            $materia->name_m = $request->get('materia');
+            $materia->save();
+            $idmateria = DB::getPdo()->lastInsertId();
+            MateriasUsersController::guardar($idmateria,$iduser);
+            return redirect('/home');
+        }
+
+
     }
 
     public function show($id)

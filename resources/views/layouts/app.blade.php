@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.navgrande')
+        @include('layouts.notlogued')
 
 
 

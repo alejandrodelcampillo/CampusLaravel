@@ -12,13 +12,21 @@ body{
     margin: 10px;
 }
 
+.container-materias h5{
+    font-weight: bold;
+}
+
 .container-materias img{
     width: 200px;
     height: 100px;
+    margin-top: 20px;
 }
 
 .card-materias{
     display: inline-block;
     margin: 4px;
     background-color: white;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
 }

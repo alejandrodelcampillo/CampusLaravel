@@ -10,7 +10,7 @@
 <body>
     @include("layouts.navgrande")
     <div class="container">
-        <form class="text-center border p-5" role="form" method="post" action="{{action('MateriaController@store')}}">
+        <form class="text-center border p-2" role="form" method="post" style="margin: 10px" action="{{action('MateriaController@store')}}">
             {{csrf_field()}}
 
             <p class="h4 mb-4">Menú Materia</p>
@@ -20,10 +20,18 @@
             <lavel>Mail del Profesor</lavel>
             <input type="text" id="materia" name="mail" class="form-control mb-4" placeholder="Mail Profesor">
 
-
             <!-- Sign in button -->
             <button class="btn btn-info my-4 btn-lg btn-warning border-dark" type="submit">Enviar</button>
         </form>
+        <div class="container" style="text-align: center">
+
+                @if($alert)
+                    <button class="btn btn-info my-4 btn-lg btn-danger border-dark btn">El mail no existe</button>
+                @endif
+
+        </div>
+
+
     </div>
     @include('layouts.footer')
 </body>

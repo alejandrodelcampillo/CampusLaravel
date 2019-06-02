@@ -27,62 +27,16 @@
     <body>
     @include('layouts.notlogued')
     <div class="container-materias">
+        @foreach($datos as $dato)
         <div class="card-materias border" style="width: 18rem;">
-            <img class="card-img-top" src="http://www.comunicacionesua.cl/wp-content/uploads/2018/11/coloquio-matematica.jpeg" alt="Card image cap">
+            <img class="card-img-top" src={{ asset('img/'.$dato->image_url) }} alt="Card image cap">
             <div class="card-body text-center">
-                <h5 class="card-title">Matemática II</h5>
-                <p class="card-text">Aqui su descripción</p>
+                <h5 class="card-title">{{ $dato->name_m }}</h5>
+                <p class="card-text">{{ $dato->description }}</p>
                 <a href="#" class="btn btn-primary"> <i class="fas fa-info-circle"></i>  Mas información</a>
             </div>
         </div>
-        <div class="card-materias border" style="width: 18rem;";>
-            <img class="card-img-top" src="https://i.blogs.es/389033/programming/450_1000.jpg" alt="Card image cap">
-            <div class="card-body text-center">
-                <h5 class="card-title">Laboratorio V</h5>
-                <p class="card-text">Aqui su descripción</p>
-                <a href="#" class="btn btn-primary"> <i class="fas fa-info-circle"></i>  Mas información</a>
-            </div>
-        </div>
-        <div class="card-materias border" style="width: 18rem;";>
-            <img class="card-img-top" src="https://www.ipc3.com/wp-content/uploads/programming-java.jpg" alt="Card image cap">
-            <div class="card-body text-center">
-                <h5 class="card-title">Programación Avanzada I</h5>
-                <p class="card-text">Aqui su descripción</p>
-                <a href="#" class="btn btn-primary"> <i class="fas fa-info-circle"></i>  Mas información</a>
-            </div>
-        </div>
-        <div class="card-materias border" style="width: 18rem;";>
-            <img class="card-img-top" src="https://i.pinimg.com/originals/8e/e7/3b/8ee73b4b283b0dda5b415e2f2da7a254.jpg" alt="Card image cap">
-            <div class="card-body text-center">
-                <h5 class="card-title">Redes</h5>
-                <p class="card-text">Aqui su descripción</p>
-                <a href="#" class="btn btn-primary"> <i class="fas fa-info-circle"></i>  Mas información</a>
-            </div>
-        </div>
-        <div class="card-materias border" style="width: 18rem;">
-            <img class="card-img-top" src="https://www.britanico.edu.pe/blog/wp-content/uploads/2016/11/8-maneras-de-practicar-ingl%C3%A9s-en-clases-y-fuera-800x400.jpg" alt="Card image cap">
-            <div class="card-body text-center">
-                <h5 class="card-title">Ingles Técnico Avanzado I</h5>
-                <p class="card-text">Aqui su descripción</p>
-                <a href="#" class="btn btn-primary"> <i class="fas fa-info-circle"></i>  Mas información</a>
-            </div>
-        </div>
-        <div class="card-materias border" style="width: 18rem;">
-            <img class="card-img-top" src="https://www.dior.nl/wp-content/uploads/2015/09/scrum-board-1024x768.jpg" alt="Card image cap">
-            <div class="card-body text-center">
-                <h5 class="card-title">Metodología de Sistemas II</h5>
-                <p class="card-text">Aqui su descripción</p>
-                <a href="#" class="btn btn-primary"> <i class="fas fa-info-circle"></i>  Mas información</a>
-            </div>
-        </div>
-        <div class="card-materias border" style="width: 18rem;">
-            <img class="card-img-top" src="https://konclass.com/wp-content/uploads/2018/11/bases-de-datos.jpg" alt="Card image cap">
-            <div class="card-body text-center">
-                <h5 class="card-title">Base de datos II</h5>
-                <p class="card-text">Aqui su descripción</p>
-                <a href="#" class="btn btn-primary"> <i class="fas fa-info-circle"></i>  Mas información</a>
-            </div>
-        </div>
+        @endforeach
     </div>
     @include('layouts.footer')
     </body>

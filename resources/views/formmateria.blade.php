@@ -19,6 +19,10 @@
             <input type="text" id="materia" name="materia" class="form-control mb-4" placeholder="Nombre materia">
             <lavel>Mail del Profesor</lavel>
             <input type="text" id="materia" name="mail" class="form-control mb-4" placeholder="Mail Profesor">
+            <lavel>Descripción de la Materia</lavel>
+            <input type="text" id="materia" name="descripcion" class="form-control mb-4" placeholder="Descripcion">
+            <lavel>Imagen principal</lavel>
+            <input type="file" id="materia" name="imagen" class="form-control mb-4" placeholder="Imagen">
 
             <!-- Sign in button -->
             <button class="btn btn-info my-4 btn-lg btn-warning border-dark" type="submit">Enviar</button>

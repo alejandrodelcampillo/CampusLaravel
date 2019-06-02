@@ -13,7 +13,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -29,7 +28,7 @@
     <div class="container-materias">
         @foreach($datos as $dato)
         <div class="card-materias border" style="width: 18rem;">
-            <img class="card-img-top" src={{ asset('img/'.$dato->image_url) }} alt="Card image cap">
+            <img class="card-img-top" src="{{ asset('img/'.$dato->image_url) }}" alt="Card image cap">
             <div class="card-body text-center">
                 <h5 class="card-title">{{ $dato->name_m }}</h5>
                 <p class="card-text">{{ $dato->description }}</p>

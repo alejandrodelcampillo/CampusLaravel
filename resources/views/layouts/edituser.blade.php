@@ -28,8 +28,8 @@
         @foreach($users as $dato)
                 <th scope="row">{{ $dato->id }}</th>
                 <td>{{ $dato->name }}</td>
-                <td>{{ $dato->email }}</td>
                 @if($id == $dato->id)
+                    <td><input type="email" name="email" placeholder="{{ $dato->email }}"></td>
                     <td>
                         <select name="type">
                             <option value="1">Alumno</option>
@@ -38,20 +38,23 @@
                         </select>
                     </td>
                     @else
+                    <td>{{ $dato->email }}</td>
                         @if( $dato->type == 1 )
-                            <td>Usuario</td>
+                            <td>Alumno</td>
                             @elseif( $dato->type == 2 )
                                 <td>Profesor</td>
                                 @else
                                     <td>Administrador</td>
                         @endif
+                    <input hidden type="text" value="{{ $id }}" name="id">
                 @endif
                 <td>
-                    <a class="btn-group-sm text-dark" style="margin-right: 10px" href={{Route('modify_user', ['id'=>$dato->id])}}><i class="fas fa-user-edit"></i></a>
-                    <a class="btn-group-sm text-dark" style="margin-left: 10px" href={{Route('delete_user', ['id'=>$dato->id])}}><i class="fa fa-trash"></i></a>
+                    @if($dato->type!=3)
+                        <a class="btn-group-sm text-dark" style="margin-right: 10px" href={{Route('modify_user', ['id'=>$dato->id])}}><i class="fas fa-user-edit"></i></a>
+                        <a class="btn-group-sm text-dark" style="margin-left: 10px" href={{Route('delete_user', ['id'=>$dato->id])}}><i class="fa fa-trash"></i></a>
+                    @endif
                 </td>
             </tr>
-            <input hidden type="text" value="{{ $dato->id }}" name="id">
         @endforeach
         </tbody>
 

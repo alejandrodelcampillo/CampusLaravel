@@ -9,24 +9,27 @@
 </head>
 <body>
 @include('layouts.navgrande')
-<div class="container">
+<div class="container text-center">
     <table class="table table-bordered">
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Materia</th>
             <th scope="col">Profesor</th>
+            <th scope="col">Editar</th>
         </tr>
         </thead>
         <tbody>
 
-        <?php foreach($datos as $dato){?>
+        @foreach($datos as $dato)
         <tr>
-            <th scope="row"><?php echo $dato->subject_id; ?></th>
-            <td><?php echo $dato->name_m; ?> </td>
-            <td><?php echo $dato->name; ?></td>
+            <th scope="row">{{$dato->subject_id}}</th>
+            <td>{{$dato->name_m}} </td>
+            <td>{{$dato->name}}</td>
+            <td><a class="btn-group-sm text-dark" href={{Route('modify_user', ['id'=>$dato->id])}}><i class="fas fa-user-edit"></i></a></td>
         </tr>
-        <?php } ?>
+        @endforeach
+
         </tbody>
     </table>
 </div>

@@ -17,10 +17,11 @@ class UserController extends Controller
     }
 
     public function save(Request $request){
-        $newId = $request->get('type');
+        $newType = $request->get('type');
+        $newEmail = $request->get('email');
         DB::table('users')
             ->where('id','=',$request->get('id'))
-            ->update(['type'=>$newId]);
+            ->update(['type'=>$newType, 'email'=>$newEmail]);
         return redirect('user');
     }
 

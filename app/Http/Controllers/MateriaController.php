@@ -78,6 +78,13 @@ class MateriaController extends Controller
         return view('layouts.allsubjectview',compact('datos'));
     }
 
+    public function mostrardetalle(Request $request){
+
+        $dato =  DB::table('materias')
+           ->where('id','=',$request->id)
+            ->get();
+        return view('layouts.pruebamateria',compact('dato'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -87,7 +94,7 @@ class MateriaController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**

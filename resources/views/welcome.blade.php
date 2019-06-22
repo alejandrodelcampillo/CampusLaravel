@@ -32,7 +32,10 @@
             <div class="card-body text-center">
                 <h5 class="card-title">{{ $dato->name_m }}</h5>
                 <p class="card-text">{{ $dato->description }}</p>
-                <a href="#" class="btn btn-primary"> <i class="fas fa-info-circle"></i>  Mas información</a>
+                <form action="POST">
+                    <button class="bt btn-primary" type="submit"> Ingresar</button>
+                </form>
+                <a href="{{action('MateriaController@mostrardetalle',['id' => $dato->name_m])}}" class="btn btn-primary" type=""> <i class="fas fa-info-circle"></i>  Ingresar </a>
             </div>
         </div>
         @endforeach

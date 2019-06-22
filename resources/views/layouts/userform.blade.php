@@ -9,27 +9,39 @@
 </head>
 <body>
 @include('layouts.navgrande')
-<div class="container text-center">
+<div class="container text-center" style="margin-top: 15px">
     <table class="table table-bordered">
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Materia</th>
-            <th scope="col">Profesor</th>
-            <th scope="col">Editar</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Email</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Editar / Eliminar</th>
         </tr>
         </thead>
         <tbody>
 
-        @foreach($datos as $dato)
+        @foreach($users as $dato)
         <tr>
-            <th scope="row">{{$dato->subject_id}}</th>
-            <td>{{$dato->name_m}} </td>
-            <td>{{$dato->name}}</td>
-            <td><a class="btn-group-sm text-dark" href={{Route('modify_user', ['id'=>$dato->id])}}><i class="fas fa-user-edit"></i></a></td>
+            <th scope="row">{{ $dato->id }}</th>
+            <td>{{ $dato->name }}</td>
+            <td>{{ $dato->email }}</td>
+            @if( $dato->type == 1 )
+                <td>Alumno</td>
+                @elseif( $dato->type == 2 )
+                    <td>Profesor</td>
+                    @else
+                        <td>Administrador</td>
+            @endif
+            <td>
+                @if($dato->type!=3)
+                    <a class="btn-group-sm text-dark" style="margin-right: 10px" href={{Route('modify_user', ['id'=>$dato->id])}}><i class="fas fa-user-edit"></i></a>
+                    <a class="btn-group-sm text-dark" style="margin-left: 10px" href={{Route('delete_user', ['id'=>$dato->id])}}><i class="fa fa-trash"></i></a>
+                @endif
+            </td>
         </tr>
         @endforeach
-
         </tbody>
     </table>
 </div>

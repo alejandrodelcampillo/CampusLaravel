@@ -11,15 +11,19 @@ use App\Usuario as Usuario;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@index');
 
 Auth::routes();
 Route::get('/mostrar', 'MateriaController@mostrar')->name('mostrar');
+Route::get('/verMateria', 'MateriaController@mostrardetalle')->name('mostrardetalle');
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::post('/materias/create', 'MateriaController@store');
 Route::resource("materia","MateriaController");
+
+Route::get('/user','UserController@index')->name('user');
+Route::get('/user/{id}','UserController@modify')->name('modify_user');
+Route::post('/user/save','UserController@save')->name('save');
+Route::get('/user/delete/{id}','UserController@delete')->name('delete_user');
 
 Route::get("/leer/{nombre}",function ($nombre){
     $usuarios=Usuario::where("nombre",$nombre)->get();

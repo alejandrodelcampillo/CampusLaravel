@@ -16,6 +16,8 @@ class Materias extends Migration
         Schema::create('materias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_m',50)->nullable();
+            $table->string('description',200)->nullable();
+            $table->string('image_url',50)->nullable();
             $table->timestamps();
         });
 

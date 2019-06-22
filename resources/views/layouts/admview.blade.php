@@ -18,11 +18,12 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Menu Materias
+                    Menú
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('materia.index') }}">Crear materias</a>
                     <a class="dropdown-item" href="/mostrar">Ver materias</a>
+                    <a class="dropdown-item" href="{{ route('user') }}">Ver usuarios</a>
                 </div>
             </li>
         </ul>

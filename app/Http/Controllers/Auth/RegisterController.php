@@ -64,8 +64,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $name = ucwords($data['name']);
         return User::create([
-            'name' => $data['name'],
+            'name' => $name,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

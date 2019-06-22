@@ -5,6 +5,8 @@ use App\Http\Controllers\MateriasUsersController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Materia as materia;
+use PhpParser\Node\Stmt\Return_;
+
 class MateriaController extends Controller
 {
     /**
@@ -50,6 +52,8 @@ class MateriaController extends Controller
         }else{
             $materia = new Materia;
             $materia->name_m = $request->get('materia');
+            $materia->description = $request->get('descripcion');
+            $materia->image_url = $request->get('imagen');
             $materia->save();
             $idmateria = DB::getPdo()->lastInsertId();
             MateriasUsersController::guardar($idmateria,$iduser);
@@ -74,6 +78,13 @@ class MateriaController extends Controller
         return view('layouts.allsubjectview',compact('datos'));
     }
 
+    public function mostrardetalle(Request $request){
+
+        $dato =  DB::table('materias')
+           ->where('id','=',$request->id)
+            ->get();
+        return view('layouts.pruebamateria',compact('dato'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -83,7 +94,7 @@ class MateriaController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**

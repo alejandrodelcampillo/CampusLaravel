@@ -130,28 +130,33 @@ class MateriaController extends Controller
 
     public function verificarpass(Request $request){
         $datito= $request->get('dato');
-        $idparam=$datito['subject_id'];
         $dato =  DB::table('materias_users')
             ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
-            ->where('materias_users.subject_id','=',$datito['subject_id'])
+            ->where('materias_users.subject_id','=',$datito)
             ->where('materias_users.user_id','=',Auth::user()->id)
             ->get();
         if(count($dato)==0){
             $alert=false;
-            $arrai=['alert'=> $alert,'idparam'=> $idparam];
+            $arrai=['alert'=> $alert,'idparam'=> $datito];
 
            return view('layouts.passwordform',compact('arrai'));
         }else{
-            $files = FileController::show($datito['subject_id']);
+            $files = FileController::show($datito);
             $arrai=['dato'=> $dato,'file'=> $files];
             return view('layouts.materia',compact('arrai'));
         }
 
         //return view('layouts.pruebamateria',compact('dato'));
     }
-
+    public static function getmateriaid($id){
+        $dato =  DB::table('materias_users')
+            ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+            ->where('materias_users.subject_id','=',$id)
+            ->where('materias_users.user_id','=',Auth::user()->id)
+            ->get();
+        return $dato;
+    }
     public function verificacion(Request $request){
-
         $inputs=Input::all();
         $materia = new Materia();
 
@@ -169,7 +174,7 @@ class MateriaController extends Controller
                 ->where('materias_users.subject_id','=',$inputs['idmateria'])
                 ->where('materias_users.user_id','=',Auth::user()->id)
                 ->get();
-            $files = FileController::show($datito['subject_id']);
+            $files = FileController::show($inputs['idmateria']);
             $arrai=['dato'=> $dato,'file'=> $files];
             return view('layouts.materia',compact('arrai'));
         }else{

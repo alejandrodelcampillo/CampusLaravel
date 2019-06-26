@@ -16,7 +16,12 @@ class FileController extends Controller
             $file->file_name = $request['fileToUpload']->getClientOriginalName();
           	$file->save();
             $request->file('fileToUpload')->storeAs('public', $request['fileToUpload']->getClientOriginalName());
-            return redirect('/home');
+
+            $dato=MateriaController::getmateriaid($request['subject_id']);
+            $files = FileController::show($request['subject_id']);
+            $arrai=['dato'=> $dato,'file'=> $files];
+             return view('layouts.materia',compact('arrai'));
+
 
     }
     public static function show($idmateria){

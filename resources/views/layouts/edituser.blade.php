@@ -7,12 +7,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
 @include('layouts.navgrande')
 
 <div class="container text-center" style="margin-top: 15px">
-    <form class="text-center border p-2" role="form" method="post" style="margin: 10px" action="{{ route('save') }}">
+    <form class="text-center border p-2" role="form" method="post" style="margin: 10px; background-color: white" action="{{ route('save') }}">
         {{csrf_field()}}
     <table class="table table-bordered">
         <thead class="thead-light">

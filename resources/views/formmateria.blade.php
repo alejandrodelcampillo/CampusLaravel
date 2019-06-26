@@ -9,20 +9,27 @@
 </head>
 <body>
     @include("layouts.navgrande")
-    <div class="container">
+    <div class="container" style="margin-top: 20px; margin-bottom: 20px">
         <form class="text-center border p-2" role="form" method="post" style="margin: 10px" action="{{action('MateriaController@store')}}">
             {{csrf_field()}}
 
             <p class="h4 mb-4">Menú Materia</p>
-
-            <lavel>Nombre de la Materia</lavel>
-            <input type="text" id="materia" name="materia" class="form-control mb-4" placeholder="Nombre materia">
-            <lavel>Mail del Profesor</lavel>
-            <input type="text" id="materia" name="mail" class="form-control mb-4" placeholder="Mail Profesor">
-            <lavel>Descripción de la Materia</lavel>
-            <input type="text" id="materia" name="descripcion" class="form-control mb-4" placeholder="Descripcion">
-            <lavel>Imagen principal</lavel>
-            <input type="file" id="materia" name="imagen" class="form-control mb-4" placeholder="Imagen">
+            <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
+                <lavel>Nombre de la Materia</lavel>
+                <input type="text" id="materia" name="materia" class="form-control mb-4" placeholder="Nombre materia">
+            </div>
+            <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
+                <lavel>Mail del Profesor</lavel>
+                <input type="text" id="materia" name="mail" class="form-control mb-4" placeholder="Mail Profesor">
+            </div>
+           <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
+               <lavel>Descripción de la Materia</lavel>
+               <input type="text" id="materia" name="descripcion" class="form-control mb-4" placeholder="Descripcion">
+           </div>
+           <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
+               <lavel>Imagen principal</lavel>
+               <input type="file" id="materia" name="imagen" class="form-control mb-4" placeholder="Imagen">
+           </div>
 
             <!-- Sign in button -->
             <button class="btn btn-info my-4 btn-lg btn-warning border-dark" type="submit">Enviar</button>

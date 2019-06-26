@@ -49,7 +49,7 @@
             <input class="btn btn-warning btn-outline-dark" type="file" name="fileToUpload" id="fileToUpload">
             <input type="text" name="file_title" id="file_title" placeholder="Nombre de Archivo">
             <input type="hidden" name="subject_id" value="{{$arrai['dato'][0]->subject_id}}">
-            <input class="btn btn-warning btn-outline-dark" type="submit" value="Subir archivo" name="submit">
+            <button class="btn btn-warning btn-outline-dark" type="submit" name="submit">Subir Archivo</button>
         </form>
     </div>
     @endif

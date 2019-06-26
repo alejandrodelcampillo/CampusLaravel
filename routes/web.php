@@ -22,6 +22,7 @@ Route::post('/verificacion', 'MateriaController@verificacion')->name('verificar'
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::post('/materias/create', 'MateriaController@store');
 Route::resource("materia","MateriaController");
+Route::get('/modificar/{id}','MateriaController@modify')->name('modify_materia');
 
 Route::get('/user','UserController@index')->name('user');
 Route::get('/user/{id}','UserController@modify')->name('modify_user');

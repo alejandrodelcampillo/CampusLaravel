@@ -10,6 +10,8 @@
 <body>
 @include('layouts.navgrande')
 <div class="container text-center">
+    <form class="text-center border p-2" role="form" method="post" style="margin: 10px" action="{{ route('save') }}">
+        {{csrf_field()}}
     <table class="table table-bordered">
         <thead class="thead-light">
         <tr>
@@ -22,16 +24,18 @@
         <tbody>
 
         @foreach($datos as $dato)
-        <tr>
-            <th scope="row">{{$dato->subject_id}}</th>
-            <td>{{$dato->name_m}} </td>
-            <td>{{$dato->name}}</td>
-            <td><a class="btn-group-sm text-dark" href={{Route('modify_materia', ['id'=>$dato->id])}}><i class="fas fa-user-edit"></i></a></td>
-        </tr>
+            <tr>
+                <th scope="row">{{$dato->subject_id}}</th>
+                <td>{{$dato->name_m}} </td>
+                <td>{{$dato->name}}</td>
+                <td><a class="btn-group-sm text-dark" href={{Route('modify_materia', ['id'=>$dato->id])}}><i class="fas fa-user-edit"></i></a></td>
+            </tr>
         @endforeach
 
         </tbody>
     </table>
+        <button type="submit" class="btn-success btn-group-toggle btn-lg"><i class="fas fa-check"></i> Aplicar Cambios</button>
+    </form>
 </div>
 @include('layouts.footer')
 </body>

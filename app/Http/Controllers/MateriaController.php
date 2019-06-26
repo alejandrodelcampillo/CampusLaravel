@@ -60,7 +60,14 @@ class MateriaController extends Controller
             return redirect('/home');
         }
 
+    }
 
+    public function modify(int $id){
+        $datos =  DB::table('users')
+            ->join('materias_users', 'users.id', '=', 'materias_users.user_id')
+            ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+            ->get();
+        return view('layouts/editallsubjectview',compact('datos','id'));
     }
 
     public function show($id)

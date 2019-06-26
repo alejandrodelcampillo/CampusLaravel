@@ -22,7 +22,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public static function index()
     {
         $datos =  DB::table('users')
             ->join('materias_users', 'users.id', '=', 'materias_users.user_id')

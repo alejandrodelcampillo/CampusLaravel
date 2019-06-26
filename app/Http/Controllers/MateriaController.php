@@ -54,6 +54,7 @@ class MateriaController extends Controller
             $materia->name_m = $request->get('materia');
             $materia->description = $request->get('descripcion');
             $materia->image_url = $request->get('imagen');
+            $materia->clave = $request->get('pass');
             $materia->save();
             $idmateria = DB::getPdo()->lastInsertId();
             MateriasUsersController::guardar($idmateria,$iduser);
@@ -84,7 +85,12 @@ class MateriaController extends Controller
             ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
             ->where('users.type','=','2')
             ->get();
-        return view('layouts.allsubjectview',compact('datos'));
+        if(Auth::user()->type == 3){
+            return view('layouts.allsubjectview',compact('datos'));
+        }else{
+            return HomeController::index();
+        }
+
     }
 
     public function save(Request $request){

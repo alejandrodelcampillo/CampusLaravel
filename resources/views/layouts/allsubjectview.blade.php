@@ -15,20 +15,27 @@
     <table class="table table-bordered" style="border-radius: 20px; background-color: white; margin-top: 20px; margin-bottom: 20px">
         <thead class="thead-light">
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Ver materia</th>
             <th scope="col">Materia</th>
+            @if(Auth::user()->type!=1)
             <th scope="col">Profesor</th>
+            @endif
+            @if(Auth::user()->type==3)
             <th scope="col">Editar</th>
+            @endif
         </tr>
         </thead>
         <tbody>
-
         @foreach($datos as $dato)
         <tr>
-            <th scope="row">{{$dato->subject_id}}</th>
+            <th scope="row"><a href="{{action('MateriaController@verificarpass',['dato'=>$dato->subject_id])}}">Ingresar</a></th>
             <td>{{$dato->name_m}} </td>
+            @if(Auth::user()->type!=1)
             <td>{{$dato->name}}</td>
+            @endif
+            @if(Auth::user()->type==3)
             <td><a class="btn-group-sm text-dark" href={{Route('modify_materia', ['id'=>$dato->id])}}><i class="fas fa-user-edit"></i></a></td>
+            @endif
         </tr>
         @endforeach
 

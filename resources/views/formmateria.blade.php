@@ -26,7 +26,7 @@
                <input type="text" id="materia" name="descripcion" class="form-control mb-4" placeholder="Descripcion">
             </div>
             <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
-                <input type="text" id="materia" name="pass" class="form-control mb-4" placeholder="Contraseña">
+                <input type="password" id="materia" name="pass" class="form-control mb-4" placeholder="Contraseña">
             </div>
            <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
                <lavel>Imagen principal</lavel>

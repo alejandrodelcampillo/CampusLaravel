@@ -17,7 +17,7 @@
 
         <p class="h4 mb-4">Ingrese la clave de matriculacion</p>
         <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
-            <input type="text" id="passmateria" name="passmateria" class="form-control mb-4" placeholder="Clave de materia">
+            <input type="password" id="passmateria" name="passmateria" class="form-control mb-4" placeholder="Clave de materia">
         </div>
         <input type="hidden" id="idmateria" name="idmateria" value="{{$arrai['idparam']}}">
 

@@ -86,6 +86,31 @@ class MateriaController extends Controller
         return view('layouts.pruebamateria',compact('dato'));
     }
 
+    public function verificarpass(Request $request){
+        $datito= $request->get('dato');
+        $idparam=$datito['subject_id'];
+        $dato =  DB::table('materias_users')
+            ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+            ->where('materias_users.subject_id','=',$datito['subject_id'])
+            ->where('materias_users.user_id','=',5)
+            ->get();
+        if(count($dato)==0){
+
+           return view('layouts.passwordform',compact('idparam'));
+        }else{
+            return view('layouts.pruebamateria',compact('dato'));
+        }
+
+        //return view('layouts.pruebamateria',compact('dato'));
+    }
+
+    public function verificacion($passmateria,$idmateria){
+        $dato =  DB::table('materias_users')
+            ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+            ->where('materias_users.subject_id','=',$datito['subject_id'])
+            ->where('materias_users.user_id','=',5)
+            ->get();
+    }
     /**
      * Show the form for editing the specified resource.
      *

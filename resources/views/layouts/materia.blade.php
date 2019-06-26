@@ -19,12 +19,15 @@
         </div>
         <div class="card" style="padding-left: 30px; padding-right: 30px">
             <h3 class="text-lg-left">Archivos</h3>
-            <table>
+            <table class="table tab text-lg-left">
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th></th>
                 @foreach ($arrai['file'] as $file)
                     <tr class="text-lg-left">
-                        <th>{{$file->file_title}}</th>
-                        <th>{{$file->created_at}}</th>
-                        <th>
+                        <td>{{$file->file_title}}</td>
+                        <td>{{$file->created_at}}</td>
+                        <td>
                             <a href="/storage/public/{{$file->file_name}}" download="{{$file->file_name}}">
                                 <button type="button" class="btn btn-warning btn-outline-dark">
                                     <i class="glyphicon glyphicon-download">
@@ -32,7 +35,7 @@
                                     </i>
                                 </button>
                             </a>
-                        </th>
+                        </td>
                     </tr>
                 @endforeach
             </table>
@@ -43,9 +46,8 @@
         <h3>Subir Archivos</h3>
         <form action="{{action('FileController@store')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
-            Seleccionar archivo
             <input class="btn btn-warning btn-outline-dark" type="file" name="fileToUpload" id="fileToUpload">
-            <input type="text" name="file_title" id="file_title">
+            <input type="text" name="file_title" id="file_title" placeholder="Nombre de Archivo">
             <input type="hidden" name="subject_id" value="{{$arrai['dato'][0]->subject_id}}">
             <input class="btn btn-warning btn-outline-dark" type="submit" value="Subir archivo" name="submit">
         </form>

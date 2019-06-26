@@ -14,6 +14,7 @@ use App\Usuario as Usuario;
 Route::get('/', 'WelcomeController@index');
 
 Auth::routes();
+Route::get('/contact', 'ContactController@index')->name('index');
 Route::get('/mostrar', 'MateriaController@mostrar')->name('mostrar');
 Route::get('/verMateria', 'MateriaController@mostrardetalle')->name('mostrardetalle');
 Route::get('/matriculacion', 'MateriaController@verificarpass')->name('verificarpass');

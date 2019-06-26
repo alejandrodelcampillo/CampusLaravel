@@ -10,9 +10,8 @@ use App\Usuario as Usuario;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'WelcomeController@index');
-
+Route::resource("file","FileController");
 Auth::routes();
 Route::get('/contact', 'ContactController@index')->name('index');
 Route::get('/mostrar', 'MateriaController@mostrar')->name('mostrar');

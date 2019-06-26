@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,23 +13,32 @@
 <div class="container text-center">
     <div class="card-body">
         <div class="card" style="padding: 25px;margin: 20px;">
-            <h1 class="text-lg-left text-warning">Nombre de Materia</h1>
+            <h1 class="text-lg-left text-warning">{{$arrai['dato'][0]->name_m}}</h1>
         </div>
-
-        <div class="card" style="padding: 25px; margin: 20px;">
-            <h3 class="text-lg-left text-warning">Tema 1</h3>
-            <p class="text-lg-left">Archivos</p>
-            <p class="text-lg-left">Archivos</p>
-        </div>
-
-        <div class="card" style="padding: 25px; margin: 20px">
-            <h3 class="text-lg-left text-warning">Tema 2</h3>
-            <p class="text-lg-left">Archivos</p>
-            <p class="text-lg-left">Archivos</p>
-        </div>
+        @foreach ($arrai['file'] as $file)
+        <tr>
+            <td>{{$file->file_title}}</td>
+            <td>{{$file->created_at}}</td>
+            <td>
+                <a href="../public/storage/public/{{$file->file_name}}" download="{{$file->file_name}}">
+                    <button type="button" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-download">
+                        Descargar
+                    </i>
+                    </button>
+                </a>
+            </td>
+        </tr>
+        @endforeach
     </div>
-
-
+<form action="{{action('FileController@store')}}" method="post" enctype="multipart/form-data">
+                {{csrf_field()}}
+                Seleccionar archivo
+<input type="file" name="fileToUpload" id="fileToUpload">
+<input type="text" name="file_title" id="file_title">
+<input type="hidden" name="subject_id" value="{{$arrai['dato'][0]->subject_id}}">
+<input type="submit" value="Subir archivo" name="submit">
+</form>
 </div>
 @include('layouts.footer')
 </body>

@@ -142,7 +142,9 @@ class MateriaController extends Controller
 
            return view('layouts.passwordform',compact('arrai'));
         }else{
-            return view('layouts.materia',compact('dato'));
+            $files = FileController::show($datito['subject_id']);
+            $arrai=['dato'=> $dato,'file'=> $files];
+            return view('layouts.materia',compact('arrai'));
         }
 
         //return view('layouts.pruebamateria',compact('dato'));
@@ -167,7 +169,9 @@ class MateriaController extends Controller
                 ->where('materias_users.subject_id','=',$inputs['idmateria'])
                 ->where('materias_users.user_id','=',Auth::user()->id)
                 ->get();
-           return view('layouts.materia',compact('dato'));
+            $files = FileController::show($datito['subject_id']);
+            $arrai=['dato'=> $dato,'file'=> $files];
+            return view('layouts.materia',compact('arrai'));
         }else{
             $alert=true;
             $arrai=['alert'=> $alert,'idparam'=> $inputs['idmateria']];

@@ -17,10 +17,11 @@ class FileController extends Controller
           	$file->save();
             $request->file('fileToUpload')->storeAs('public', $request['fileToUpload']->getClientOriginalName());
 
-            $dato=MateriaController::getmateriaid($request['subject_id']);
+           /* $dato=MateriaController::getmateriaid($request['subject_id']);
             $files = FileController::show($request['subject_id']);
             $arrai=['dato'=> $dato,'file'=> $files];
-             return view('layouts.materia',compact('arrai'));
+             return view('layouts.materia',compact('arrai'));*/
+        return back();
 
 
     }

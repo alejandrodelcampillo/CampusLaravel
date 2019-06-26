@@ -32,7 +32,12 @@
             <div class="card-body text-center">
                 <h5 class="card-title">{{ $dato->name_m }}</h5>
                 <p class="card-text">{{ $dato->description }}</p>
-                <a href="{{ route('login') }}" class="btn btn-primary"> <i class="fas fa-info-circle"></i>  Ingresar</a>
+                @if (Auth::guest())
+                        <a href="{{ route('login') }}" class="btn btn-primary"> <i class="fas fa-info-circle"></i>  Ingresar</a>
+                    @else
+                         <a href="{{action('MateriaController@verificarpass',['dato'=>$dato->subject_id])}}" class="btn btn-primary" type="" > <i class="fas fa-info-circle"></i>  Ingresar </a>
+                @endif
+
             </div>
         </div>
         @endforeach

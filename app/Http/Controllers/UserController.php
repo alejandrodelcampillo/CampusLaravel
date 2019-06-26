@@ -19,9 +19,23 @@ class UserController extends Controller
     public function save(Request $request){
         $newType = $request->get('type');
         $newEmail = $request->get('email');
-        DB::table('users')
-            ->where('id','=',$request->get('id'))
-            ->update(['type'=>$newType, 'email'=>$newEmail]);
+        if($newEmail==null){
+            DB::table('users')
+                ->where('id','=',$request->get('id'))
+                ->update(['type'=>$newType]);
+        }
+        else{
+            if($newType==null){
+                DB::table('users')
+                    ->where('id','=',$request->get('id'))
+                    ->update(['email'=>$newEmail]);
+            }
+            else{
+                DB::table('users')
+                    ->where('id','=',$request->get('id'))
+                    ->update(['type'=>$newType, 'email'=>$newEmail]);
+            }
+        }
         return redirect('user');
     }
 

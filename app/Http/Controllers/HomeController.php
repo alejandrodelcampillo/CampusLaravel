@@ -27,6 +27,7 @@ class HomeController extends Controller
         $datos =  DB::table('users')
             ->join('materias_users', 'users.id', '=', 'materias_users.user_id')
             ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+            ->where('users.type','=','2')
             ->get();
         return view('home',compact('datos'));
     }

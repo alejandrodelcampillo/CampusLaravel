@@ -66,6 +66,7 @@ class MateriaController extends Controller
         $datos =  DB::table('users')
             ->join('materias_users', 'users.id', '=', 'materias_users.user_id')
             ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+            ->where('users.type','=','2')
             ->get();
         return view('layouts/editallsubjectview',compact('datos','id'));
     }
@@ -81,9 +82,43 @@ class MateriaController extends Controller
         $datos =  DB::table('users')
             ->join('materias_users', 'users.id', '=', 'materias_users.user_id')
             ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+            ->where('users.type','=','2')
             ->get();
         return view('layouts.allsubjectview',compact('datos'));
     }
+
+    public function save(Request $request){
+        $newMateriaName = $request->get('name_m');
+        $newProfesorName = $request->get('name');
+        $profesorID = DB::table('users')
+            ->where('email','=',$newProfesorName)
+            ->get('id');
+
+        if($newMateriaName==null){
+            DB::table('materias_users')
+                ->join('users','users.id','=','materias_users.user_id')
+                ->where('subject_id','=',$request->get('id'))
+                ->where('type','=','2')
+                ->update(['user_id'=>$profesorID[0]->id]);
+        }elseif($newProfesorName==null){
+            DB::table('materias')
+                ->where('id','=',$request->get('id'))
+                ->update(['name_m'=>$newMateriaName]);
+        }else{
+            DB::table('materias')
+                ->where('id','=',$request->get('id'))
+                ->update(['name_m'=>$newMateriaName]);
+
+            DB::table('materias_users')
+                ->join('users','users.id','=','materias_users.user_id')
+                ->where('subject_id','=',$request->get('id'))
+                ->where('type','=','2')
+                ->update(['user_id'=>$profesorID[0]->id]);
+        }
+
+        return redirect('mostrar');
+    }
+
 
     public function mostrardetalle(Request $request){
 
@@ -141,6 +176,7 @@ class MateriaController extends Controller
 
 
     }
+
     /**
      * Show the form for editing the specified resource.
      *

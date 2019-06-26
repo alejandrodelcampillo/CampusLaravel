@@ -10,7 +10,7 @@
 <body>
 @include('layouts.navgrande')
 <div class="container text-center">
-    <form class="text-center border p-2" role="form" method="post" style="margin: 10px" action="{{ route('save') }}">
+    <form class="text-center border p-2" role="form" method="post" style="margin: 10px" action="{{ route('save_materia') }}">
         {{csrf_field()}}
     <table class="table table-bordered">
         <thead class="thead-light">
@@ -26,10 +26,17 @@
         @foreach($datos as $dato)
             <tr>
                 <th scope="row">{{$dato->subject_id}}</th>
-                <td>{{$dato->name_m}} </td>
-                <td>{{$dato->name}}</td>
-                <td><a class="btn-group-sm text-dark" href={{Route('modify_materia', ['id'=>$dato->id])}}><i class="fas fa-user-edit"></i></a></td>
+                @if($id == $dato->id)
+                <td><input type="text" name="name_m" placeholder="{{ $dato->name_m }}"></td>
+                <td><input type="email" name="name" placeholder="Email del profesor"></td>
+                <td></td>
+                    @else
+                        <td>{{$dato->name_m}} </td>
+                        <td>{{$dato->name}}</td>
+                        <td></td>
+                @endif
             </tr>
+            <input hidden type="text" value="{{ $id }}" name="id">
         @endforeach
 
         </tbody>

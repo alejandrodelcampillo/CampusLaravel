@@ -25,7 +25,7 @@
                         <th>{{$file->file_title}}</th>
                         <th>{{$file->created_at}}</th>
                         <th>
-                            <a href="../public/storage/public/{{$file->file_name}}" download="{{$file->file_name}}">
+                            <a href="/storage/public/{{$file->file_name}}" download="{{$file->file_name}}">
                                 <button type="button" class="btn btn-warning btn-outline-dark">
                                     <i class="glyphicon glyphicon-download">
                                         Descargar

@@ -156,6 +156,16 @@ class MateriaController extends Controller
             ->get();
         return $dato;
     }
+
+    public static function getmateriaprofe(){
+        $datos =  DB::table('materias_users')
+            ->join('users','materias_users.user_id','=','users.id')
+            ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+            ->where('materias_users.user_id','=',Auth::user()->id)
+            ->get();
+
+        return view('layouts.allsubjectview',compact('datos'));
+    }
     public function verificacion(Request $request){
         $inputs=Input::all();
         $materia = new Materia();

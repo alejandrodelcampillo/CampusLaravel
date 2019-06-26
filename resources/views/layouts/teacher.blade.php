@@ -19,7 +19,7 @@
                     Mis Materias
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/mostrar">Ver mis materias</a>
+                    <a class="dropdown-item" href="/mostrarmateriasprofe">Ver mis materias</a>
                 </div>
             </li>
         </ul>

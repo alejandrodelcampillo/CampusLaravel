@@ -15,6 +15,7 @@ Route::resource("file","FileController");
 Auth::routes();
 Route::get('/contact', 'ContactController@index')->name('index');
 Route::get('/mostrar', 'MateriaController@mostrar')->name('mostrar');
+Route::get('/mostrarmateriasprofe', 'MateriaController@getmateriaprofe')->name('mostrarmateriasprofe');
 Route::get('/verMateria', 'MateriaController@mostrardetalle')->name('mostrardetalle');
 Route::get('/matriculacion', 'MateriaController@verificarpass')->name('verificarpass');
 Route::post('/verificacion', 'MateriaController@verificacion')->name('verificar');

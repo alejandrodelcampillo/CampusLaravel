@@ -9,13 +9,15 @@
 </head>
 <body>
 @include("layouts.navgrande")
-<div class="container">
+<div class="container" style="margin-top: 20px; margin-bottom: 20px">
     <form class="text-center border p-2" role="form" method="post" style="margin: 10px" action="{{action('MateriaController@verificacion')}}">
         {{csrf_field()}}
 
         <p class="h4 mb-4">Ingrese la clave de matriculacion</p>
-        <lavel>Clave</lavel>
-        <input type="text" id="passmateria" name="passmateria" class="form-control mb-4" placeholder="Clave de materia">
+        <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
+            <lavel>Clave</lavel>
+            <input type="text" id="passmateria" name="passmateria" class="form-control mb-4" placeholder="Clave de materia">
+        </div>
         <input type="hidden" id="idmateria" name="idmateria" value="{{$arrai['idparam']}}">
 
 

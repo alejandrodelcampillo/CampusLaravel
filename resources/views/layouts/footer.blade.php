@@ -19,7 +19,7 @@
             <!-- Grid column -->
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
-                    <a href="#!" class="text-warning"><i class="fas fa-phone"></i> Contacto</a>
+                    <a href="{{ url('/contact') }}" class="text-warning"><i class="fas fa-phone"></i> Contacto</a>
                 </h6>
             </div>
             <!-- Grid column -->

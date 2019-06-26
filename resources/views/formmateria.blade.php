@@ -17,17 +17,17 @@
 
             <p class="h4 mb-4">Menú Materia</p>
             <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
-                <lavel>Nombre de la Materia</lavel>
                 <input type="text" id="materia" name="materia" class="form-control mb-4" placeholder="Nombre materia">
             </div>
             <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
-                <lavel>Mail del Profesor</lavel>
                 <input type="text" id="materia" name="mail" class="form-control mb-4" placeholder="Mail Profesor">
             </div>
-           <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
-               <lavel>Descripción de la Materia</lavel>
+            <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
                <input type="text" id="materia" name="descripcion" class="form-control mb-4" placeholder="Descripcion">
-           </div>
+            </div>
+            <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
+                <input type="text" id="materia" name="pass" class="form-control mb-4" placeholder="Contraseña">
+            </div>
            <div class="text-center" style="margin-left: 250px; margin-right: 250px;">
                <lavel>Imagen principal</lavel>
                <input type="file" id="materia" name="imagen" class="form-control mb-4" placeholder="Imagen">

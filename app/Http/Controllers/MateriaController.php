@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\MateriasUsersController;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 use App\Materia as materia;
-use PhpParser\Node\Stmt\Return_;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 
 class MateriaController extends Controller
 {
@@ -83,7 +83,7 @@ class MateriaController extends Controller
         $dato =  DB::table('materias')
            ->where('id','=',$request->id)
             ->get();
-        return view('layouts.pruebamateria',compact('dato'));
+        return view('layouts.materia',compact('dato'));
     }
 
     public function verificarpass(Request $request){
@@ -92,24 +92,47 @@ class MateriaController extends Controller
         $dato =  DB::table('materias_users')
             ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
             ->where('materias_users.subject_id','=',$datito['subject_id'])
-            ->where('materias_users.user_id','=',5)
+            ->where('materias_users.user_id','=',Auth::user()->id)
             ->get();
         if(count($dato)==0){
+            $alert=false;
+            $arrai=['alert'=> $alert,'idparam'=> $idparam];
 
-           return view('layouts.passwordform',compact('idparam'));
+           return view('layouts.passwordform',compact('arrai'));
         }else{
-            return view('layouts.pruebamateria',compact('dato'));
+            return view('layouts.materia',compact('dato'));
         }
 
         //return view('layouts.pruebamateria',compact('dato'));
     }
 
-    public function verificacion($passmateria,$idmateria){
-        $dato =  DB::table('materias_users')
-            ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
-            ->where('materias_users.subject_id','=',$datito['subject_id'])
-            ->where('materias_users.user_id','=',5)
+    public function verificacion(Request $request){
+
+        $inputs=Input::all();
+        $materia = new Materia();
+
+
+        $materia =  DB::table('materias')
+            ->where('materias.id','=',$inputs['idmateria'])
             ->get();
+        $pass=$materia[0]->clave;
+
+        if($pass==$inputs['passmateria']){
+
+            MateriasUsersController::guardar($inputs['idmateria'],Auth::user()->id);
+            $dato =  DB::table('materias_users')
+                ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+                ->where('materias_users.subject_id','=',$inputs['idmateria'])
+                ->where('materias_users.user_id','=',Auth::user()->id)
+                ->get();
+           return view('layouts.materia',compact('dato'));
+        }else{
+            $alert=true;
+            $arrai=['alert'=> $alert,'idparam'=> $inputs['idmateria']];
+            return view('layouts.passwordform',compact('arrai'));
+        }
+
+
     }
     /**
      * Show the form for editing the specified resource.

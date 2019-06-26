@@ -16,12 +16,19 @@
         <p class="h4 mb-4">Ingrese la clave de matriculacion</p>
         <lavel>Clave</lavel>
         <input type="text" id="passmateria" name="passmateria" class="form-control mb-4" placeholder="Clave de materia">
-        <input type="hidden" id="idmateria" name="idmateria" value="{{$idparam}}">
+        <input type="hidden" id="idmateria" name="idmateria" value="{{$arrai['idparam']}}">
 
 
         <!-- Sign in button -->
         <button class="btn btn-info my-4 btn-lg btn-warning border-dark" type="submit">Enviar</button>
     </form>
+    <div class="container" style="text-align: center">
+
+        @if($arrai['alert']==true)
+            <button class="btn btn-info my-4 btn-lg btn-danger border-dark btn">Password Incorrecta</button>
+        @endif
+
+    </div>
 
 
 </div>

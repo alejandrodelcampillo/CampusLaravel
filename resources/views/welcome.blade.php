@@ -24,6 +24,15 @@
 
     </head>
     <body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#config-web-app -->
+
+
+
     @include('layouts.notlogued')
     <div class="container-materias">
         @foreach($datos as $dato)

@@ -34,7 +34,7 @@
             <td>{{$dato->name}}</td>
             @endif
             @if(Auth::user()->type==3)
-            <td><a class="btn-group-sm text-dark" href={{Route('modify_materia', ['id'=>$dato->id])}}><i class="fas fa-user-edit"></i></a></td>
+            <td><a class="btn-group-sm text-dark" href={{Route('modify_materia', ['id'=>$dato->subject_id])}}><i class="fas fa-user-edit"></i></a></td>
             @endif
         </tr>
         @endforeach

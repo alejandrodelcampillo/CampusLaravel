@@ -15,12 +15,12 @@ class MateriaUsuario extends Migration
     {
         Schema::create('materias_users', function (Blueprint $table) {
 
-            $table->BigInteger("user_id")->unsigned();
+            $table->BigInteger("user_id")->unsigned()->nullable();
             $table->BigInteger("subject_id")->unsigned();
             $table->timestamps();
         });
         Schema::table('materias_users',function (Blueprint $table){
-            $table->foreign("user_id")->references("id")->on("users");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete('set null');
             $table->foreign("subject_id")->references("id")->on("materias");
         });
     }

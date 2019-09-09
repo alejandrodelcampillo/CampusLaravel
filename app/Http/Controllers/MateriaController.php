@@ -64,10 +64,11 @@ class MateriaController extends Controller
     }
 
     public function modify(int $id){
-        $datos =  DB::table('users')
-            ->join('materias_users', 'users.id', '=', 'materias_users.user_id')
-            ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+        $datos =  DB::table('materias')
+            ->join('materias_users', 'materias.id', '=', 'materias_users.subject_id')
+            ->leftJoin('users', 'materias_users.user_id', '=', 'users.id')
             ->where('users.type','=','2')
+            ->orWhereNull('materias_users.user_id')
             ->get();
         return view('layouts/editallsubjectview',compact('datos','id'));
     }
@@ -80,10 +81,11 @@ class MateriaController extends Controller
 
     public function mostrar()
     {
-        $datos =  DB::table('users')
-            ->join('materias_users', 'users.id', '=', 'materias_users.user_id')
-            ->join('materias', 'materias_users.subject_id', '=', 'materias.id')
+        $datos =  DB::table('materias')
+            ->join('materias_users', 'materias.id', '=', 'materias_users.subject_id')
+            ->leftJoin('users', 'materias_users.user_id', '=', 'users.id')
             ->where('users.type','=','2')
+            ->orWhereNull('materias_users.user_id')
             ->get();
         if(Auth::user()->type == 3){
             return view('layouts.allsubjectview',compact('datos'));
@@ -102,9 +104,10 @@ class MateriaController extends Controller
 
         if($newMateriaName==null){
             DB::table('materias_users')
-                ->join('users','users.id','=','materias_users.user_id')
+                ->leftJoin('users','users.id','=','materias_users.user_id')
                 ->where('subject_id','=',$request->get('id'))
                 ->where('type','=','2')
+                ->orWhereNull('user_id')
                 ->update(['user_id'=>$profesorID[0]->id]);
         }elseif($newProfesorName==null){
             DB::table('materias')
@@ -116,9 +119,10 @@ class MateriaController extends Controller
                 ->update(['name_m'=>$newMateriaName]);
 
             DB::table('materias_users')
-                ->join('users','users.id','=','materias_users.user_id')
+                ->leftJoin('users','users.id','=','materias_users.user_id')
                 ->where('subject_id','=',$request->get('id'))
                 ->where('type','=','2')
+                ->orWhereNull('user_id')
                 ->update(['user_id'=>$profesorID[0]->id]);
         }
 

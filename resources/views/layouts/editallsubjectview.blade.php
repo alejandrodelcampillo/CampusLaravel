@@ -28,17 +28,21 @@
         @foreach($datos as $dato)
             <tr>
                 <th scope="row">{{$dato->subject_id}}</th>
-                @if($id == $dato->id)
+                @if($id == $dato->subject_id)
                 <td><input type="text" name="name_m" placeholder="{{ $dato->name_m }}"></td>
                 <td><input type="email" name="name" placeholder="Email del profesor"></td>
                 <td></td>
                     @else
                         <td>{{$dato->name_m}} </td>
-                        <td>{{$dato->name}}</td>
+                        @if(is_null($dato->user_id))
+                            <td></td>
+                        @else
+                            <td>{{$dato->name}}</td>
+                        @endif
                         <td></td>
+                    <input hidden type="text" value="{{ $id }}" name="id">
                 @endif
             </tr>
-            <input hidden type="text" value="{{ $id }}" name="id">
         @endforeach
 
         </tbody>

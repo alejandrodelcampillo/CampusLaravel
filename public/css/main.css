@@ -26,7 +26,7 @@ body{
     display: inline-block;
     margin: 4px;
     background-color: white;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
 }
